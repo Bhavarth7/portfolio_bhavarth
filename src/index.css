@@ -1,3 +1,100 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-navy-950 text-slate-200 font-sans;
+  }
+
+  ::selection {
+    @apply bg-accent-500/30 text-white;
+  }
+
+  /* Focus styles for accessibility */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-accent-500;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-6xl mx-auto px-5 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-20 sm:py-28 lg:py-32;
+  }
+
+  .heading-1 {
+    @apply text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white;
+  }
+
+  .heading-2 {
+    @apply text-3xl sm:text-4xl font-bold tracking-tight text-white;
+  }
+
+  .heading-3 {
+    @apply text-xl sm:text-2xl font-semibold text-white;
+  }
+
+  .body-text {
+    @apply text-base sm:text-lg text-slate-400 leading-relaxed;
+  }
+
+  .label-text {
+    @apply text-xs font-mono uppercase tracking-widest text-accent-500;
+  }
+
+  .card {
+    @apply bg-slate-900/50 border border-slate-800 rounded-2xl p-6 sm:p-8
+           hover:border-accent-600/40 transition-all duration-300;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-accent-600 hover:bg-accent-500
+           text-white font-medium rounded-lg transition-all duration-200
+           focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2
+           focus-visible:ring-offset-navy-950;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-6 py-3 border border-slate-700
+           hover:border-accent-600/50 hover:bg-slate-800/50 text-slate-300 hover:text-white
+           font-medium rounded-lg transition-all duration-200
+           focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2
+           focus-visible:ring-offset-navy-950;
+  }
+
+  .nav-link {
+    @apply text-sm font-medium text-slate-400 hover:text-white transition-colors duration-200
+           focus-visible:text-white;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-mono
+           bg-slate-800 text-slate-300 border border-slate-700;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
